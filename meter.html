@@ -1,99 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Peeranut Pongpakatien">
-
     <title>Power Usage</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
-
-      <link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <script type="text/javascript" src="moment.js"></script>
-      <script type="text/javascript" src="daterangepicker.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-            <style>
-        .dropbtn {
-            background-color: #e74c3c;
-            color: white;
-            padding: 16px;
-            font-size: 22px;
-            cursor: pointer;
-            border: 1px solid transparent;
-              border-radius: 4px;
-              -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-                      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-              box-shadow: 10px 10px 5px #888888;
-        }
-
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #c0392b;
-        }
-        #myInput {
-            border-box: box-sizing;
-            background-position: 14px 12px;
-            background-repeat: no-repeat;
-            font-size: 16px;
-            padding: 14px 20px 12px 45px;
-            border: none;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            z-index: 1000;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f6f6f6;
-            min-width: 100px;
-            overflow: auto;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 6px 8px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown a:hover {background-color: #ddd}
-
-        .show {display:block;}
-        </style>
+    <link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
+    <!-- Custom Javascript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <script type="text/javascript" src="daterangepicker.js"></script>
 </head>
-
 <body>
-
     <div id="wrapper">
-
-        <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Top Menu Items -->
                 <ul class="nav navbar-left top-nav">
@@ -114,10 +42,10 @@
                     
                     <!--    <h1 class="page-header"><p id="RoomIdHtml" align = "middle"> Room</p> </h1>-->
                     <div class="col-lg-12"><center>
-                        <h1 class="page-header" >A/C Power Usage
+                         <h1 class="page-header" >A/C Power Usage
                              <br> <small>
-                            Department of Computer Engineering, Floor #4, 30th Year Anniversary Building</small>
-                        </h1></center>
+                            Department of Computer Engineering, Floor #4, 30th Year Anniversary Building</small><br>
+                        <small>Faculty of Engineering, Chiang Mai University</small></h1></center>
                         
 
                        <!-- <ol class="breadcrumb">
@@ -307,7 +235,7 @@
            <footer class="footer">
       <div class="container">
         <center>
-            <div class="row"> <h3>Sponsored by</h3></div>
+            <div class="row"> <h3>Developed by</h3></div>
             <div class="row">
              <div class="col-lg-2"></div>
              <div class="col-lg-4"> <a href="http://cpe.eng.cmu.ac.th/2013/"><img src="image/cpecmu-logo.png" alt="Learning Inventions Laboratory" style="height:50px;"></a>
