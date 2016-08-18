@@ -12,11 +12,11 @@
 import urllib2,urllib,httplib,socket,ssl,time,json
 import Elec
 
-keyFile = open('apikey_write.json')
+keyFile = open('/home/pi/Desktop/project/apikey_write.json')
 key = json.load(keyFile)
 keyFile.close()
 
-configFile = open('config.json')
+configFile = open('/home/pi/Desktop/project/config.json')
 config = json.load(configFile)
 configFile.close()
 
