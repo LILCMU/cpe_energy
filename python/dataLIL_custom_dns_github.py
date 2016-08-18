@@ -1,24 +1,31 @@
-import urllib2,urllib,httplib,socket,ssl,Elec,time
+#-------------------------------------------------------------------------------------#
+#-------------------------------------------------------------------------------------#
+#--------------- Python code for READ and POST to datalogging LIL --------------------#
+#-------------------------------------------------------------------------------------#
+#------------------ A/C Energy Consumption Measurement System ------------------------#
+#---------------------- Department of Computer Engineering ---------------------------#
+#------------ Faculty of Engineering, Chiang Mai University, Thailand ----------------#
+#-------------------------------------------------------------------------------------#
+#-------------------------------------------------------------------------------------#
+#-------------------------------------------------------------------------------------#
 
-# init variables
+import urllib2,urllib,httplib,socket,ssl,time,json
+import Elec
+
+keyFile = open('apikey_write.json')
+key = json.load(keyFile)
+keyFile.close()
+
+configFile = open('config.json')
+config = json.load(configFile)
+configFile.close()
+
 error_count = 0
-id = 1
-dict = {'key':'value'} # api write key from your channel on datalogging
+id = int(config['start_id'])
 
-# Post data function
-def senddata(data):
-    body = urllib.urlencode(data)
-    h = urllib2.Request("https://data.learninginventions.org/update?", body)
-    try:
-        resp = urllib2.urlopen(h)
-        return resp.read()
-    except:
-        pass
-
-# Custom dns methods by using socket / httplib
 def MyResolver(host):
-  if host == 'data.learninginventions.org':
-    return 'ip address' # input ip address for custom dns
+  if host == config['host']:
+    return config['ip_host']
   else:
     return host
 
@@ -39,24 +46,33 @@ class MyHTTPSHandler(urllib2.HTTPSHandler):
   def https_open(self,req):
     return self.do_open(MyHTTPSConnection,req)
 
+
 opener = urllib2.build_opener(MyHTTPHandler,MyHTTPSHandler)
 urllib2.install_opener(opener)
 
-# main program
-while True:
-    if id > 34 :
-        id = 1
+def senddata(data):
+    body = urllib.urlencode(data)
+    h = urllib2.Request(config['post_url'], body)
     try:
-        data = {'key': dict[str(id)], 'field1': Elec.readenergy(id),'field3': Elec.readcurr(id)}
+        resp = urllib2.urlopen(h)
+        return resp.read()
+    except:
+        pass
+
+while True:
+    if id > int(config['end_id']):
+        id = int(config['start_id'])
+    try:
+        data = {'key': key[str(id)], config['field_energy']: Elec.readenergy(id),config['field_current']: Elec.readcurr(id)}
     except IOError:
         error_count += 1
         print "Count Error : %s" % error_count
         print "Cannot connect modbus channel : %s" % id
-        error = {'key': 'value', 'field1': error_count, 'field2': id} # channel for error records
+        error =  {'key': key['error_channel'], config['field_err_count']: error_count, config['field_err_channel']: id}
         print senddata(error)
-        time.sleep(1)
+        time.sleep(int(config['delay_time']))
         try:
-            data = {'key': dict[str(id)], 'field1': Elec.readenergy(id),'field3': Elec.readcurr(id)}
+            data = {'key': key[str(id)], config['field_energy']: Elec.readenergy(id),config['field_current']: Elec.readcurr(id)}
         except IOError:
             id += 1
             continue
