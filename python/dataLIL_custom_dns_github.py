@@ -12,17 +12,20 @@
 import urllib2,urllib,httplib,socket,ssl,time,json
 import Elec
 
-keyFile = open('/home/pi/Desktop/project/apikey_write.json')
+# Import setting json file
+keyFile = open('/home/pi/Desktop/project/apikey_write.json') # need to be your json file path
 key = json.load(keyFile)
 keyFile.close()
 
-configFile = open('/home/pi/Desktop/project/config.json')
+configFile = open('/home/pi/Desktop/project/config.json') # need to be your json file path
 config = json.load(configFile)
 configFile.close()
 
+# Init variable
 error_count = 0
 id = int(config['start_id'])
 
+# Custom dns by using socket / httplib method
 def MyResolver(host):
   if host == config['host']:
     return config['ip_host']
@@ -50,6 +53,7 @@ class MyHTTPSHandler(urllib2.HTTPSHandler):
 opener = urllib2.build_opener(MyHTTPHandler,MyHTTPSHandler)
 urllib2.install_opener(opener)
 
+# Post data function
 def senddata(data):
     body = urllib.urlencode(data)
     h = urllib2.Request(config['post_url'], body)
@@ -59,6 +63,7 @@ def senddata(data):
     except:
         pass
 
+# Main loop programs
 while True:
     if id > int(config['end_id']):
         id = int(config['start_id'])
