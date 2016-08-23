@@ -9,15 +9,19 @@
 #-------------------------------------------------------------------------------------#
 #-------------------------------------------------------------------------------------#
 
-import urllib2,urllib,httplib,socket,ssl,time,json
+import urllib2,urllib,httplib,socket,ssl,time,json,os,sys
 import read_rs485_github
 
 # Import setting json file
-keyFile = open('/home/pi/Desktop/project/apikey_write.json') # need to be your json file path
+cur_path = os.path.abspath(os.path.dirname(sys.argv[0]))
+key_path = os.path.join(cur_path,'json','apikey_write.json')
+config_path = os.path.join(cur_path,'json','config.json')
+
+keyFile = open(key_path)
 key = json.load(keyFile)
 keyFile.close()
 
-configFile = open('/home/pi/Desktop/project/config.json') # need to be your json file path
+configFile = open(config_path)
 config = json.load(configFile)
 configFile.close()
 
