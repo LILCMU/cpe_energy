@@ -14,8 +14,8 @@ import read_rs485_github
 
 # Import setting json file
 cur_path = os.path.abspath(os.path.dirname(sys.argv[0]))
-key_path = os.path.join(cur_path,'json','apikey_write.json')
-config_path = os.path.join(cur_path,'json','config.json')
+key_path = os.path.join(cur_path,'apikey_write.json')
+config_path = os.path.join(cur_path,'config.json')
 
 keyFile = open(key_path)
 key = json.load(keyFile)
