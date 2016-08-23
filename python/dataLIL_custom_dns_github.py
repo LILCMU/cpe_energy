@@ -10,7 +10,7 @@
 #-------------------------------------------------------------------------------------#
 
 import urllib2,urllib,httplib,socket,ssl,time,json
-import Elec
+import read_rs485_github
 
 # Import setting json file
 keyFile = open('/home/pi/Desktop/project/apikey_write.json') # need to be your json file path
@@ -68,7 +68,7 @@ while True:
     if id > int(config['end_id']):
         id = int(config['start_id'])
     try:
-        data = {'key': key[str(id)], config['field_energy']: Elec.readenergy(id),config['field_current']: Elec.readcurr(id)}
+        data = {'key': key[str(id)], config['field_energy']: read_rs485_github.readenergy(id),config['field_current']: read_rs485_github.readcurr(id)}
     except IOError:
         error_count += 1
         print "Count Error : %s" % error_count
@@ -77,7 +77,7 @@ while True:
         print senddata(error)
         time.sleep(int(config['delay_time']))
         try:
-            data = {'key': key[str(id)], config['field_energy']: Elec.readenergy(id),config['field_current']: Elec.readcurr(id)}
+            data = {'key': key[str(id)], config['field_energy']: read_rs485_github.readenergy(id),config['field_current']: read_rs485_github.readcurr(id)}
         except IOError:
             id += 1
             continue
