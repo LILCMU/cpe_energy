@@ -1,31 +1,29 @@
 import minimalmodbus
 import time
 
-def readcurr( idslave ):
-	rs485 = minimalmodbus.Instrument('/dev/ttyAMA0', idslave, mode='rtu')
-	rs485.debug = True         # this is the serial port name
-	rs485.CLOSE_PORT_AFTER_EACH_CALL=True
+def setuprs485( id ):
+	rs485 = minimalmodbus.Instrument('/dev/ttyAMA0', id , mode='rtu')
+	rs485.debug = True
+	rs485.CLOSE_PORT_AFTER_EACH_CALL = True
 	rs485.serial.baudrate = 2400   # Baud
 	rs485.serial.bytesize = 8
 	rs485.serial.parity   = minimalmodbus.serial.PARITY_NONE
 	rs485.serial.stopbits = 1
 	rs485.serial.timeout  = 1   # seconds
+	return rs485
+
+def readcurr( idslave ):
+	rs485 = setuprs485(idslave)
 	curr = rs485.read_float(6, functioncode=4, numberOfRegisters=2)
 	time.sleep(1)
 	return curr
 
 def readenergy( idslave ):
-	rs485 = minimalmodbus.Instrument('/dev/ttyAMA0', idslave, mode='rtu')
-	rs485.debug = True         # this is the serial port name
-	rs485.CLOSE_PORT_AFTER_EACH_CALL=True
-	rs485.serial.baudrate = 2400   # Baud
-	rs485.serial.bytesize = 8
-	rs485.serial.parity   = minimalmodbus.serial.PARITY_NONE
-	rs485.serial.stopbits = 1
-	rs485.serial.timeout  = 1   # seconds
+	rs485 = setuprs485(idslave)
 	totalace = rs485.read_float(342, functioncode=4, numberOfRegisters=2)
 	time.sleep(1)
-return totalace
+	return totalace
+
 
 # --------------------- Readable value Power Analyser --------------------------#
 # voltage = rs485.read_float(0, functioncode=4, numberOfRegisters=2)
