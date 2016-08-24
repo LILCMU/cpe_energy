@@ -398,8 +398,8 @@ function lastStat (data) {
 	sumValue = 0
 	order = 0
 
-	 fetchDataOnePoint({results : 1, end:moment(start).format('YYYY-MM-DD HH:mm:ss'), type:'unit_start',timezone:Asia/Bangkok});
-     fetchDataOnePoint({results : 1, end:moment(end).format('YYYY-MM-DD HH:mm:ss'), type:'unit_end',timezone:Asia/Bangkok});
+	 fetchDataOnePoint({results : 1, end:moment(start).format('YYYY-MM-DD HH:mm:ss'), type:'unit_start',timezone:Asia%2FBangkok});
+     fetchDataOnePoint({results : 1, end:moment(end).format('YYYY-MM-DD HH:mm:ss'), type:'unit_end',timezone:Asia%2FBangkok});
 
 
 	lastUnitEntryDate = moment(end).format('DD-MMM-YYYY HH:mm:ss')
@@ -504,8 +504,8 @@ function cb(start, end) {
 		params = getUrlParameter();
 		validateParams();
 		console.log( moment(start).format('YYYY-MM-DD HH:mm:ss'))
-		fetchData({field: 1 ,start : moment(start).format('YYYY-MM-DD HH:mm:ss'),end : moment(end).format('YYYY-MM-DD HH:mm:ss'),median: 10,timezone:Asia/Bangkok});
-		fetchData({field: 3 ,start : moment(start).format('YYYY-MM-DD HH:mm:ss'),end : moment(end).format('YYYY-MM-DD HH:mm:ss'),median: 10,timezone:Asia/Bangkok});
+		fetchData({field: 1 ,start : moment(start).format('YYYY-MM-DD HH:mm:ss'),end : moment(end).format('YYYY-MM-DD HH:mm:ss'),median: 10,timezone:Asia%2FBangkok});
+		fetchData({field: 3 ,start : moment(start).format('YYYY-MM-DD HH:mm:ss'),end : moment(end).format('YYYY-MM-DD HH:mm:ss'),median: 10,timezone:Asia%2FBangkok});
 		document.getElementById("lastTimeUpdate").innerHTML = moment(lastUpdate).format('DD MMMM YYYY HH:mm:ss');
 		document.getElementById("RoomIdHtml").innerHTML = "Room  : "+  params.roomID;
 		document.title = params.roomID   + " - Power Usage ";
