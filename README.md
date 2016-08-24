@@ -9,6 +9,7 @@ The sysetem can be accessed from the following link [https://lilcmu.github.io/cp
 
 Configuration:  ***Need to change value on line with comment***
 js/config.json
+```
           {
             "server": {  
               "name": "Floor#4",      // name your map    
@@ -53,3 +54,4 @@ js/config.json
               }
             ]
           }
+```
