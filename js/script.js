@@ -398,8 +398,8 @@ function lastStat (data) {
 	sumValue = 0
 	order = 0
 
-	 fetchDataOnePoint({results : 1, end:moment(start).format('YYYY-MM-DD HH:mm:ss'), type:'unit_start'});
-     fetchDataOnePoint({results : 1, end:moment(end).format('YYYY-MM-DD HH:mm:ss'), type:'unit_end'});
+	 fetchDataOnePoint({results : 1, end:moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'), type:'unit_start'});
+     fetchDataOnePoint({results : 1, end:moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'), type:'unit_end'});
 
 
 	lastUnitEntryDate = moment(end).format('DD-MMM-YYYY HH:mm:ss')
@@ -504,8 +504,8 @@ function cb(start, end) {
 		params = getUrlParameter();
 		validateParams();
 		console.log( moment(start).format('YYYY-MM-DD HH:mm:ss'))
-		fetchData({field: 1 ,start : moment(start).format('YYYY-MM-DD HH:mm:ss'),end : moment(end).format('YYYY-MM-DD HH:mm:ss'),median: 10});
-		fetchData({field: 3 ,start : moment(start).format('YYYY-MM-DD HH:mm:ss'),end : moment(end).format('YYYY-MM-DD HH:mm:ss'),median: 10});
+		fetchData({field: 1 ,start : moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'),end : moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'),median: 10});
+		fetchData({field: 3 ,start : moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'),end : moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'),median: 10});
 		document.getElementById("lastTimeUpdate").innerHTML = moment(lastUpdate).format('DD MMMM YYYY HH:mm:ss');
 		document.getElementById("RoomIdHtml").innerHTML = "Room  : "+  params.roomID;
 		document.title = params.roomID   + " - Power Usage ";
@@ -542,4 +542,10 @@ function setQueryParameters(params) {
 		query.push(key + "=" + value);
 	}
 	location.search = query.join("&");
+}
+
+function getTimezone(data) {
+	var date = new Date(data);
+	var localdate = date-(-1*date.getTimezoneOffset()*60*1000);
+	return localdate;
 }
