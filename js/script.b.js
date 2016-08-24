@@ -134,8 +134,8 @@ function cb(start, end) {
         //console.log(moment(end).format('YYYY-MM-DD HH:mm:ss'))
     
 
-        fetchData({results : 1, end:moment(start).format('YYYY-MM-DD HH:mm:ss'), type:'unit_start'});
-        fetchData({results : 1, end:moment(end).format('YYYY-MM-DD HH:mm:ss'), type:'unit_end'});
+        fetchData({results : 1, end:moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'), type:'unit_start'});
+        fetchData({results : 1, end:moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'), type:'unit_end'});
         
         return;
         //Fetch channel information
@@ -261,4 +261,9 @@ function getUrlParameter(sParam) {
         }
     }
     return datas;
+}
+function getTimezone(data) {
+	var date = new Date(data);
+	var localdate = date-(-1*date.getTimezoneOffset()*60*1000);
+	return localdate;
 }
