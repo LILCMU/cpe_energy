@@ -7,8 +7,8 @@
 
 The sysetem can be accessed from the following link [https://lilcmu.github.io/cpe_energy](https://lilcmu.github.io/cpe_energy)
 
-Configuration:  ***Need to change value on line with comment***
-js/config.json
+######Configuration for web:  ***Need to change value on line with comment***
+> js/config.json
 ```
           {
             "server": {  
