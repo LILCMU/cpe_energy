@@ -546,6 +546,6 @@ function setQueryParameters(params) {
 
 function getTimezone(data) {
 	var date = new Date(data);
-	var localdate = date+1*date.getTimezoneOffset()*60*1000;
+	var localdate = date-(-1*date.getTimezoneOffset()*60*1000);
 	return localdate;
 }
