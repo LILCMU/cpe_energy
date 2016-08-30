@@ -1,8 +1,6 @@
 # A/C Energy Consumption Measurement System 
 ### Department of Computer Engineering, Faculty of Engineering, Chiang Mai University, Thailand
 
-/docs - contains Web Application to show data and information.
-
 /python - 	contains the script that communicates with the power meter modules via ModBus
  			It usually runs on a Raspberry Pi. 
 
