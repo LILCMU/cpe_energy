@@ -504,8 +504,8 @@ function cb(start, end) {
 		params = getUrlParameter();
 		validateParams();
 		console.log( moment(start).format('YYYY-MM-DD HH:mm:ss'))
-		fetchData({field: 1 ,start : moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'),end : moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'),median: 10});
-		fetchData({field: 3 ,start : moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'),end : moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'),median: 10});
+		fetchData({field: 1 ,start : moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'),end : moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'),median: 40});
+		fetchData({field: 3 ,start : moment(getTimezone(start)).format('YYYY-MM-DD HH:mm:ss'),end : moment(getTimezone(end)).format('YYYY-MM-DD HH:mm:ss'),median: 40});
 		document.getElementById("lastTimeUpdate").innerHTML = moment(lastUpdate).format('DD MMMM YYYY HH:mm:ss');
 		document.getElementById("RoomIdHtml").innerHTML = "Room  : "+  params.roomID;
 		document.title = params.roomID   + " - Power Usage ";
